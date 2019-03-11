@@ -1,0 +1,84 @@
+---
+title: "Dashboard Example"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+Sidebar Title {.sidebar}
+======================================
+
+## All About This 
+
+Your text here. You can use markdown syntax, including 
+[links](http://blah.com), *italics*, **bolding**, etc.
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(tidyselect)
+library(DT)
+```
+
+# Car Stuff {data-icon="fa-car"}
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+ggplot(mpg, aes(cty, hwy)) +
+  geom_point(color = "purple") +
+  theme_minimal()
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+ggplot(mpg, aes(class, hwy)) +
+  geom_col() +
+  theme_minimal()
+```
+
+### Chart C
+
+```{r}
+ggplot(mpg, aes(class, hwy, fill = as.factor(cyl))) +
+  geom_col(position = "dodge") +
+  theme_minimal()
+```
+
+### Chart D
+```{r}
+
+```
+
+# Iris Stuff 
+
+Column {data-width=650 .tabset}
+-----------------------------------------------------------------------
+```{r}
+ggplot(iris, aes(Petal.Length, Petal.Width)) +
+  geom_point(color = "purple") +
+  theme_minimal()
+```
+
+> Here's something boring, look at it. 
+
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+### Hist 1 
+```{r}
+ggplot(iris, aes(Petal.Length, Petal.Width)) +
+  geom_point(color = "purple") +
+  theme_minimal()
+```
+
+
+
+
